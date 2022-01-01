@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import AppMain from './src/App';
+import firebase from "firebase/compat";
+import {useState, useEffect} from "react";
+import {firebaseConfig} from "./config";
+
+firebase.initializeApp(firebaseConfig)
+const theme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        primary: 'tomato',
+        accent: 'yellow',
+    },
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    return (
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        <PaperProvider theme={theme}>
+            <AppMain />
+        </PaperProvider>
+    );
+}

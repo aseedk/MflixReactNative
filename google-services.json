@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "193352138357",
+    "project_id": "mflix-f97fd",
+    "storage_bucket": "mflix-f97fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193352138357:android:4d530e68e21bf73130023c",
+        "android_client_info": {
+          "package_name": "com.company.mflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193352138357-i4nn08qab1n1s2ii6na2riahf4buc23h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmxo4RoiyG0_0_KEs9hvTtNVVHJKV82tQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193352138357-i4nn08qab1n1s2ii6na2riahf4buc23h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
