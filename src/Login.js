@@ -110,9 +110,20 @@ const LoginComponent = ({navigation}) => {
                                 await SecureStore.setItemAsync("email", email);
                                 await SecureStore.setItemAsync("password", password);
                             }
-                            navigation.navigate('ViewerMainMenu', {
-                                user: user.user
-                            });
+                            await firebase.database().ref('/Users/' + user.user.uid).once('value', function (snapshot){
+                                let tempUser = snapshot.val();
+                                if (tempUser.userType === "Visitor"){
+                                    navigation.navigate('ViewerMainMenu', {
+                                        user: user.user
+                                    });
+                                }
+                                else {
+                                    navigation.navigate('PublisherMainMenu', {
+                                        user: user.user
+                                    });
+                                }
+                            })
+
                         })
                         .catch(error => {
                             if (error.code === 'auth/user-not-found') {
