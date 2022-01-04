@@ -19,7 +19,6 @@
     "ios": {
       "supportsTablet": true
     },
-
     "android": {
       "package": "com.company.mflix",
       "googleServicesFile": "./google-services.json",
@@ -30,6 +29,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

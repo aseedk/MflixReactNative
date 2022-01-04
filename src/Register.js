@@ -362,38 +362,6 @@ const RegisterComponent = ({navigation}) => {
             <HelperText type="error" visible={passwordError}>
                 Password must contains 8 character and 1 digit!
             </HelperText>
-            <RadioButton.Group
-                style={{flexDirection:'row'}}
-                onValueChange={gender => setGender(gender)}
-                value={gender}>
-                <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
-                    <Text style={[styles.subTextStyle, {fontWeight:'bold'}]}>Gender: </Text>
-                    <View style={{flexDirection:'row'}}>
-                        <Text style={styles.subTextStyle}>Male</Text>
-                        <RadioButton value="Male" />
-                    </View>
-                    <View style={{flexDirection:'row'}}>
-                        <Text style={styles.subTextStyle}>Female</Text>
-                        <RadioButton value="Female" />
-                    </View>
-                </View>
-            </RadioButton.Group>
-            <RadioButton.Group
-                style={{flexDirection:'row'}}
-                onValueChange={userType => setUserType(userType)}
-                value={userType}>
-                <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
-                    <Text style={[styles.subTextStyle, {fontWeight:'bold'}]}>User Type: </Text>
-                    <View style={{flexDirection:'row'}}>
-                        <Text style={styles.subTextStyle}>Visitor</Text>
-                        <RadioButton value="Visitor" />
-                    </View>
-                    <View style={{flexDirection:'row'}}>
-                        <Text style={styles.subTextStyle}>Publisher</Text>
-                        <RadioButton value="Publisher" />
-                    </View>
-                </View>
-            </RadioButton.Group>
             <TextInput
                 label="Country"
                 value={country}
@@ -414,6 +382,38 @@ const RegisterComponent = ({navigation}) => {
             <HelperText type="error" visible={countryError}>
                 Country is invalid!
             </HelperText>
+            <RadioButton.Group
+                style={{flexDirection:'row'}}
+                onValueChange={gender => setGender(gender)}
+                value={gender}>
+                <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
+                    <Text style={[styles.subTextStyle, {fontWeight:'bold', textAlign:'left'}]}>Gender: </Text>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={styles.subTextStyle}>Male</Text>
+                        <RadioButton value="Male" />
+                    </View>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={styles.subTextStyle}>Female</Text>
+                        <RadioButton value="Female" />
+                    </View>
+                </View>
+            </RadioButton.Group>
+            <RadioButton.Group
+                style={{flexDirection:'row'}}
+                onValueChange={userType => setUserType(userType)}
+                value={userType}>
+                <View style={{flexDirection:'row', justifyContent: 'space-evenly'}}>
+                    <Text style={[styles.subTextStyle, {fontWeight:'bold', textAlign:'left'}]}>User Type: </Text>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={styles.subTextStyle}>Visitor</Text>
+                        <RadioButton value="Visitor" />
+                    </View>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={styles.subTextStyle}>Publisher</Text>
+                        <RadioButton value="Publisher" />
+                    </View>
+                </View>
+            </RadioButton.Group>
             <Button
                 mode="contained"
                 onPress={() => {

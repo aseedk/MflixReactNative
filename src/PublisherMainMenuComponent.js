@@ -1,6 +1,6 @@
-import React, { useState, useLayoutEffect } from 'react';
-import { View, StyleSheet,ScrollView,TouchableOpacity} from 'react-native';
-import { Text, Title, TextInput,Card,Button,RadioButton } from 'react-native-paper';
+import React from 'react';
+import { View, StyleSheet} from 'react-native';
+import { Text,Button } from 'react-native-paper';
 
 export default function PublisherMainMenuComponent({ navigation, route}) {
     return(
@@ -21,7 +21,13 @@ export default function PublisherMainMenuComponent({ navigation, route}) {
                 <Text style={{fontWeight:'bold'}}>View Published Movies</Text>
             </Button>
 
-            <Button mode="contained"style={{backgroundColor:'#f3ce13',width:300,margin:10,borderWidth:2}}><Text style={{fontWeight:'bold'}}>Search Movies</Text></Button>
+            <Button mode="contained"
+                    onPress={()=>navigation.navigate('PublisherSearchPublishedMultimediaList', {
+                        user: route.params?.user
+                    })}
+                    style={{backgroundColor:'#f3ce13',width:300,margin:10,borderWidth:2}}>
+                <Text style={{fontWeight:'bold'}}>Search Movies</Text>
+            </Button>
         </View>
 
     )

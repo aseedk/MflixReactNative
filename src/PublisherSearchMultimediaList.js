@@ -1,31 +1,44 @@
 import * as React from 'react';
 import {StyleSheet, View, ScrollView, TouchableOpacity} from 'react-native';
-import {Caption, Text, TextInput} from 'react-native-paper';
+import {Caption, Headline, Text, TextInput} from 'react-native-paper';
 import firebase from "firebase/compat";
 
 
-const ViewerSearchListComponent = ({navigation, route}) => {
+const PublisherSearchPublishedListComponent = ({navigation, route}) => {
+    const user = route.params?.user;
     const [search, setSearch] = React.useState('');
     const [multimediaList, setMultimediaList] = React.useState([]);
     const [multimediaKeyList, setMultimediaKeyList] = React.useState([]);
     const [initialization, setInitialization] = React.useState(true);
     React.useEffect(async ()=>{
         if (initialization){
-            await firebase.database().ref('/MultimediaList').once('value', function (snapshot) {
-                const list = [];
-                const list2 = [];
-                for (let k in snapshot.val()) {
-                    list.push(snapshot.val()[k]);
-                    list2.push(k);
+            await firebase.database().ref('Users/' + user.uid + '/publishedMultimedia/').once('value',async function (snapshot) {
+                const multimediaKeyList = snapshot.val();
+                console.log(snapshot.val())
+                const multimediaList = []
+                if (multimediaKeyList === null) {
+                    setMultimediaList([]);
+                    setMultimediaKeyList([]);
+                } else {
+                    for (const listKey of multimediaKeyList) {
+                        if (listKey!==undefined){
+                            await firebase.database().ref('/MultimediaList/' + listKey + '/').once('value', function (snapshot2) {
+                                multimediaList.push(snapshot2.val());
+                                console.log(snapshot2.val())
+                            });
+                        }
+                    }
+                    setMultimediaList(multimediaList);
+                    setMultimediaKeyList(multimediaKeyList)
                 }
-                setMultimediaList(list);
-                setMultimediaKeyList(list2);
-            });
+            })
             setInitialization(false);
         }
+
     })
     return (
         <View style={styles.container}>
+            <Headline style={{textAlign:'center', fontWeight:'bold', padding:5, flex: 1}}>Publisher Movies/Tv Series List</Headline>
             <TextInput
                 label="Search"
                 value={search}
@@ -48,7 +61,7 @@ const ViewerSearchListComponent = ({navigation, route}) => {
                                     style={{flexDirection:'row', borderWidth:1, padding:5, margin: 5}}
                                     key={index}
                                     onPress={()=> {
-                                        navigation.navigate('ViewerDisplayMultimedia', {
+                                        navigation.navigate('PublisherDisplayMultimedia', {
                                             data: value,
                                             key: multimediaKeyList[index],
                                             user: route.params?.user
@@ -87,4 +100,4 @@ const styles = StyleSheet.create({
         marginTop: 10
     }
 });
-export default ViewerSearchListComponent;
+export default PublisherSearchPublishedListComponent;

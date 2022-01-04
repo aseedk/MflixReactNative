@@ -12,6 +12,7 @@ import PublisherPublishMultimediaComponent from "./PublisherPublishMultimediaCom
 import PublisherDisplayPublishedListComponent from "./PublisherDisplayListComponent";
 import PublisherDisplayMultimediaComponent from "./PublisherDisplayMultimediaComponent";
 import PublisherEditMultimediaComponent from "./PublisherEditMultimediaComponent";
+import PublisherSearchPublishedListComponent from "./PublisherSearchMultimediaList";
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Stack.Screen name="PublisherDisplayPublishedMultimediaList" component={PublisherDisplayPublishedListComponent} options={{title: "View Published Multimedia"}}/>
                 <Stack.Screen name="PublisherDisplayMultimedia" component={PublisherDisplayMultimediaComponent} options={{title: "View Published Details"}}/>
                 <Stack.Screen name="PublisherEditMultimedia" component={PublisherEditMultimediaComponent} options={{title: "Edit Published Multimedia"}}/>
+                <Stack.Screen name="PublisherSearchPublishedMultimediaList" component={PublisherSearchPublishedListComponent} options={{title: "Search Published Multimedia"}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
