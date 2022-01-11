@@ -37,18 +37,13 @@ const ViewerDisplayFavoriteListComponent = ({navigation, route}) => {
     })
     return (
         <View style={styles.container}>
-            <Headline style={{textAlign:'center', fontWeight:'bold', padding:5, flex: 1}}>Favorite Movies/Tv Series List</Headline>
-            <View style={{flexDirection:'row', borderWidth:1, padding:5,margin: 5}}>
-                <Text style={{flex:3, fontWeight:'bold'}}>Name</Text>
-                <Text style={{flex:1, fontWeight:'bold'}}>Genre</Text>
-                <Text style={{flex:1, fontWeight:'bold'}}>Type</Text>
-            </View>
-            <View style={{flex:3}}>
+            <Headline style={{textAlign:'center', fontWeight:'bold',color:'#fff', padding:5, flex: 1}}>Favorite Movies/Tv Series List</Headline>
+            <View style={{flex:5}}>
                 <ScrollView>
                     {multimediaList.map((value, index)=> {
                         return(
                             <TouchableOpacity
-                                style={{flexDirection:'row', borderWidth:1, padding:5, margin: 5}}
+                                style={{flexDirection:'column', borderWidth:1,borderColor:"#fff", padding:10, margin: 10, borderRadius: 25, backgroundColor: "#E50914"}}
                                 key={index}
                                 onPress={()=> {
                                     navigation.navigate('ViewerDisplayMultimedia', {
@@ -58,9 +53,11 @@ const ViewerDisplayFavoriteListComponent = ({navigation, route}) => {
                                     })
                                 }}
                             >
-                                <Text style={{flex:3}}>{value.name}</Text>
-                                <Text style={{flex:1}}>{value.genre}</Text>
-                                <Text style={{flex:1}}>{value.type}</Text>
+                                <Headline style={{flex:3, color:"#fff"}}>{value.name}</Headline>
+                                <View style={{flexDirection:'row'}}>
+                                    <Text style={{flex:1, color: '#fff'}}>Genre: {value.genre}</Text>
+                                    <Text style={{flex:1, color: '#fff'}}>Type: {value.type}</Text>
+                                </View>
                             </TouchableOpacity>
                         );})
                     }
@@ -68,7 +65,7 @@ const ViewerDisplayFavoriteListComponent = ({navigation, route}) => {
             </View>
 
             <View style={{flex:1, padding: 10}}>
-                <Caption style={{textAlign: "center"}}>Developed by: Peepo Tech</Caption>
+                <Caption style={{textAlign: "center", color:'#FFF'}}>Developed by: Peepo Tech</Caption>
             </View>
         </View>
     );
@@ -78,7 +75,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin:"1%",
         padding:"5%",
-        backgroundColor: '#fff',
+        backgroundColor: '#212121',
         justifyContent: 'center',
     },
     textStyle:{

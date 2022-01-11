@@ -21,11 +21,45 @@ function App() {
             <Stack.Navigator initialRouteName={"Login"}>
                 <Stack.Screen name="Login" component={LoginComponent} options={{headerShown: false}}/>
                 <Stack.Screen name="Register" component={RegisterComponent} options={{headerShown: false}}/>
-                <Stack.Screen name="ViewerMainMenu" component={ViewerMainMenuComponent} options={{title: "Viewer Main Menu"}}/>
-                <Stack.Screen name="ViewerDisplayMultimediaList" component={ViewerDisplayListComponent} options={{title: "View Movies/Tv Series List"}}/>
-                <Stack.Screen name="ViewerDisplayMultimedia" component={ViewerDisplayMultimediaComponent} options={{title: "View Multimedia Details"}}/>
-                <Stack.Screen name="ViewerDisplayFavoriteMultimediaList" component={ViewerDisplayFavoriteListComponent} options={{title: "Favorite Multimedia List"}}/>
-                <Stack.Screen name="ViewerSearchMultimediaList" component={ViewerSearchMultimediaList} options={{title: "Search Multimedia List"}}/>
+                <Stack.Screen name="ViewerMainMenu"
+                              component={ViewerMainMenuComponent}
+                              options={{
+                                  title: "Viewer Main Menu",
+                                  headerStyle:{backgroundColor:'#E50914'},
+                                  headerTitleStyle:{fontWeight:'bold', color:"#fff"}}
+                              }
+                />
+                <Stack.Screen name="ViewerDisplayMultimediaList"
+                              component={ViewerDisplayListComponent}
+                              options={{
+                                  title: "View Movies/Tv Series List",
+                                  headerStyle:{backgroundColor:'#E50914'},
+                                  headerTitleStyle:{fontWeight:'bold', color:"#fff"}}
+                              }
+                />
+                <Stack.Screen name="ViewerDisplayMultimedia"
+                              component={ViewerDisplayMultimediaComponent}
+                              options={{
+                                  title: "Multimedia Details",
+                                  headerStyle:{backgroundColor:'#E50914'},
+                                  headerTitleStyle:{fontWeight:'bold', color:"#fff"}}
+                              }/>
+                <Stack.Screen name="ViewerDisplayFavoriteMultimediaList"
+                              component={ViewerDisplayFavoriteListComponent}
+                              options={{
+                                  title: "Favorite Movies/Tv Series List",
+                                  headerStyle:{backgroundColor:'#E50914'},
+                                  headerTitleStyle:{fontWeight:'bold', color:"#fff"}}
+                              }
+                />
+                <Stack.Screen name="ViewerSearchMultimediaList"
+                              component={ViewerSearchMultimediaList}
+                              options={{
+                                  title: "Search Movies/Tv Series List",
+                                  headerStyle:{backgroundColor:'#E50914'},
+                                  headerTitleStyle:{fontWeight:'bold', color:"#fff"}}
+                              }
+                />
                 <Stack.Screen name="PublisherMainMenu" component={PublisherMainMenuComponent} options={{title: "Publisher Home"}}/>
                 <Stack.Screen name="PublisherPublishMultimedia" component={PublisherPublishMultimediaComponent} options={{title: "Publish Multimedia"}}/>
                 <Stack.Screen name="PublisherDisplayPublishedMultimediaList" component={PublisherDisplayPublishedListComponent} options={{title: "View Published Multimedia"}}/>

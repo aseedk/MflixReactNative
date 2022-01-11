@@ -14,61 +14,61 @@ export default function PublisherEditMultimediaComponent({route}){
     return(
         <View style={[styles.container,{backgroundColor:'white'}]}>
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Name</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Name</Text>
                 <TextInput
                     placeholder="Enter name of Movie"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={name}
                     onChangeText={setName}
-                    style={{margin:10,height:30,width:200}}
+                    style={{margin:10,height:30,width:200,flex:4}}
                 />
             </View>
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Genre</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Genre</Text>
                 <TextInput
                     placeholder="(Comedy,Horror)"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={genre}
                     onChangeText={setGenre}
-                    style={{margin:10,height:30,width:200}}
+                    style={{margin:10,height:30,width:200,flex:4}}
                 />
             </View>
 
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Cast</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Cast</Text>
                 <TextInput
                     placeholder="Add Cast names with commas(,)"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={cast}
                     onChangeText={setCast}
-                    style={{margin:10,height:30,width:200}}
+                    style={{margin:10,height:30,width:200,flex:4}}
                 />
             </View>
 
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Plot</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Plot</Text>
                 <TextInput
                     placeholder="Enter plot of movie"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={plot}
                     onChangeText={setPlot}
-                    style={{margin:10,height:30,width:200}}
+                    style={{margin:10,height:30,width:200,flex:4}}
                 />
             </View>
 
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Image</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Image</Text>
                 <TextInput
                     placeholder="Enter URL of image here"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={imageURL}
                     onChangeText={setImageURL}
-                    style={{margin:10,height:30,width:210}}
+                    style={{margin:10,height:30,width:210,flex:4}}
                 />
             </View>
 
@@ -106,13 +106,13 @@ export default function PublisherEditMultimediaComponent({route}){
                                 })
                                 .then(() => {
                                     {
-                                        ToastAndroid.show("Multimedia Updated", ToastAndroid.SHORT)
+                                        ToastAndroid.show("Multimedia Updated Successfully", ToastAndroid.SHORT)
                                         console.log('Data updated.')
                                     }
                                 });
                         }
                         else{
-                            ToastAndroid.show("Input fields are empty", ToastAndroid.SHORT)
+                            ToastAndroid.show("Input fields should not be empty", ToastAndroid.SHORT)
                         }
                     }}
 

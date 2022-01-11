@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {StyleSheet, View,Alert, ToastAndroid} from 'react-native';
-import {Paragraph, Headline, Subheading, Button} from 'react-native-paper';
+import {StyleSheet, View,Alert, ToastAndroid, Image} from 'react-native';
+import {Paragraph, Headline, Subheading, Button, Text} from 'react-native-paper';
 import firebase from "firebase/compat";
 
 const ViewerDisplayMultimediaComponent = ({route})=>{
@@ -10,12 +10,14 @@ const ViewerDisplayMultimediaComponent = ({route})=>{
     return(
         <View style={styles.container}>
             <View style={{flex: 4}}>
-                <Headline>Name: {data.name}</Headline>
-                <Subheading>Type: {data.type}</Subheading>
-                <Subheading>Genre: {data.genre}</Subheading>
-                <Subheading>Cast: {data.cast}</Subheading>
-                <Subheading>Key: {key}</Subheading>
-                <Paragraph>Plot: {data.plot}</Paragraph>
+                <Image
+                    style={styles.image}
+                    source={"https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg"}/>
+                <Headline style={styles.textStyle}>Name: {data.name}</Headline>
+                <Subheading style={styles.textStyle}>Type: {data.type}</Subheading>
+                <Subheading style={styles.textStyle}>Genre: {data.genre}</Subheading>
+                <Subheading style={styles.textStyle}>Cast: {data.cast}</Subheading>
+                <Paragraph style={styles.textStyle}>Plot: {data.plot}</Paragraph>
             </View>
             <View style={styles.buttonViewStyle}>
                 <Button
@@ -55,7 +57,7 @@ const ViewerDisplayMultimediaComponent = ({route})=>{
 
                     }}
                 >
-                    Favorite Movie
+                    <Text style={styles.buttonTextStyle}>Favorite Movie</Text>
                 </Button>
             </View>
         </View>
@@ -66,21 +68,33 @@ const styles = StyleSheet.create({
         flex: 1,
         margin:"1%",
         padding:"5%",
-        backgroundColor: '#fff',
+        backgroundColor: '#212121',
         justifyContent: 'center',
+    },
+    buttonTextStyle:{
+        color:'#fff',
+        fontWeight:"bold"
+    },
+    textStyle:{
+        color:'#fff'
     },
     buttonViewStyle:{
         flex: 1,
     },
     buttonStyle:{
-        padding:10
-    },
-    textStyle:{
-        textAlign:'center',
-        marginTop:20
+        padding:10,
+        backgroundColor: "#E50914"
     },
     subTextStyle:{
         marginTop: 10
-    }
+    },
+    image:{
+        alignSelf:'center',
+        width:100,
+        height: 100,
+        padding:5,
+        borderWidth:1,
+        backgroundColor: '#fff'
+    },
 });
 export default ViewerDisplayMultimediaComponent;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {StyleSheet, View, ScrollView, TouchableOpacity} from 'react-native';
-import {Caption, Text, TextInput} from 'react-native-paper';
+import {Caption, Headline, Text, TextInput} from 'react-native-paper';
 import firebase from "firebase/compat";
 
 
@@ -34,18 +34,13 @@ const ViewerSearchListComponent = ({navigation, route}) => {
                 placeholder={"Search Movies/Tv Series"}
                 onChangeText={search => setSearch(search)}
             />
-            <View style={{flexDirection:'row', borderWidth:1, padding:5,margin: 5}}>
-                <Text style={{flex:3, fontWeight:'bold'}}>Name</Text>
-                <Text style={{flex:1, fontWeight:'bold'}}>Genre</Text>
-                <Text style={{flex:1, fontWeight:'bold'}}>Type</Text>
-            </View>
             <View style={{flex:3}}>
                 <ScrollView>
                     {multimediaList.map((value, index)=> {
                         if (value.name.toLowerCase().includes(search.toLowerCase())){
                             return(
                                 <TouchableOpacity
-                                    style={{flexDirection:'row', borderWidth:1, padding:5, margin: 5}}
+                                    style={{flexDirection:'column', borderWidth:1,borderColor:"#fff", padding:10, margin: 10, borderRadius: 25, backgroundColor: "#E50914"}}
                                     key={index}
                                     onPress={()=> {
                                         navigation.navigate('ViewerDisplayMultimedia', {
@@ -55,9 +50,11 @@ const ViewerSearchListComponent = ({navigation, route}) => {
                                         })
                                     }}
                                 >
-                                    <Text style={{flex:3}}>{value.name}</Text>
-                                    <Text style={{flex:1}}>{value.genre}</Text>
-                                    <Text style={{flex:1}}>{value.type}</Text>
+                                    <Headline style={{flex:3, color:"#fff"}}>{value.name}</Headline>
+                                    <View style={{flexDirection:'row'}}>
+                                        <Text style={{flex:1, color: '#fff'}}>Genre: {value.genre}</Text>
+                                        <Text style={{flex:1, color: '#fff'}}>Type: {value.type}</Text>
+                                    </View>
                                 </TouchableOpacity>
                             )
                         }})
@@ -76,7 +73,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin:"1%",
         padding:"5%",
-        backgroundColor: '#fff',
+        backgroundColor: '#212121',
         justifyContent: 'center',
     },
     textStyle:{

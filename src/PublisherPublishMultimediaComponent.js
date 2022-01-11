@@ -36,38 +36,38 @@ export default function PublisherPublishMultimediaComponent({route}){
             </View>
 
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Cast</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Cast</Text>
                 <TextInput
                     placeholder="Add Cast names with commas(,)"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={cast}
                     onChangeText={setCast}
-                    style={{margin:10,height:30,width:200}}
+                    style={{margin:10,height:30,width:200,flex:4}}
                 />
             </View>
 
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Plot</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Plot</Text>
                 <TextInput
                     placeholder="Enter plot of movie"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={plot}
                     onChangeText={setPlot}
-                    style={{margin:10,height:30,width:200}}
+                    style={{margin:10,height:30,width:200,flex:4}}
                 />
             </View>
 
             <View style={{flexDirection:'row'}}>
-                <Text style={{margin:20,fontWeight:'bold',fontSize:18}}>Image</Text>
+                <Text style={{margin:20,fontWeight:'bold',fontSize:18,flex:1}}>Image</Text>
                 <TextInput
                     placeholder="Enter URL of image here"
                     mode='outlined'
                     activeOutlineColor='black'
                     value={imageURL}
                     onChangeText={setImageURL}
-                    style={{margin:10,height:30,width:210}}
+                    style={{margin:10,height:30,width:210,flex:4}}
                 />
             </View>
 
@@ -103,25 +103,25 @@ export default function PublisherPublishMultimediaComponent({route}){
                                 imageURL,
                                 publisherID: user.uid
                             }).then(async ()=> {
-                                let publishedMultimedia = [];
-                                await firebase.database().ref('/Users/'+ user.uid +'/publishedMultimedia').once('value', function (snapshot) {
-                                    publishedMultimedia = snapshot.val();
-                                })
-                                if (publishedMultimedia === null){
-                                    publishedMultimedia = [];
-                                }
-                                publishedMultimedia.push(newMultimediaReference.key);
-                                firebase.database()
-                                    .ref('/Users/'+user.uid + '/')
-                                    .update({
-                                        publishedMultimedia,
+                                    let publishedMultimedia = [];
+                                    await firebase.database().ref('/Users/'+ user.uid +'/publishedMultimedia').once('value', function (snapshot) {
+                                        publishedMultimedia = snapshot.val();
                                     })
-                                    .then(() => {
-                                        {
-                                            ToastAndroid.show("Multimedia Published", ToastAndroid.SHORT)
-                                            console.log('Data updated.')
-                                        }
-                                    });
+                                    if (publishedMultimedia === null){
+                                        publishedMultimedia = [];
+                                    }
+                                    publishedMultimedia.push(newMultimediaReference.key);
+                                    firebase.database()
+                                        .ref('/Users/'+user.uid + '/')
+                                        .update({
+                                            publishedMultimedia,
+                                        })
+                                        .then(() => {
+                                            {
+                                                ToastAndroid.show("Multimedia Published", ToastAndroid.SHORT)
+                                                console.log('Data updated.')
+                                            }
+                                        });
                                 }
                             )
                         }

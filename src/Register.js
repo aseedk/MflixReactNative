@@ -437,6 +437,11 @@ const RegisterComponent = ({navigation}) => {
                                         navigation.navigate("ViewerMainMenu", {
                                             user: user.user
                                         })
+                                    else {
+                                        navigation.navigate('PublisherMainMenu', {
+                                            user: user.user
+                                        });
+                                    }
                                 }).catch((error)=>{
                                     //error callback
                                     console.log('error ' , error)
